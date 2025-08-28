@@ -15,7 +15,15 @@ dotenv.config();
 api = process.env.YOUTUBE_API
 
 const app = express();
-app.use(cors({ origin: '*' }));
+app.use(cors({
+    origin: '*', // Or specify your frontend domains
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: false
+}));
+
+app.options('*', cors());
+
 app.use(express.json()); //handles requests json bodies
 app.use(express.text());
 // Basic logging
