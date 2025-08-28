@@ -1,6 +1,7 @@
 const express = require('express');
 const multer = require('multer');
 const path = require('path');
+const ffmpegPath = require('ffmpeg-static');
 const ffmpeg = require('fluent-ffmpeg');
 const fs = require('fs');
 const cors = require('cors');
@@ -9,7 +10,7 @@ const { exec } = require('child_process');
 const { error } = require('console');
 const { stdout, stderr } = require('process');
 
-
+ffmpeg.setFfmpegPath(ffmpegPath);
 dotenv.config();
 api = process.env.YOUTUBE_API
 
